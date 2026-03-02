@@ -16,7 +16,7 @@ if ($searchTerm !== "") {
     $stmt->execute();
     $result = $stmt->get_result();
 } else {
-    $result = $conn->query("SELECT * FROM ebookshop ORDER BY book_id");
+    $result = $conn ->query("SELECT * FROM ebookshop ORDER BY book_id");
 }
 
 $books = [];

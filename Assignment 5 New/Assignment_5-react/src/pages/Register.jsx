@@ -33,38 +33,42 @@ function Register() {
 
     if (submitted) {
         return (
-            <div style={{ padding: '20px' }}>
-                <h2>Registration Successful!</h2>
-                <p><strong>{formData.name}</strong>, you have been registered for <strong>{eventName}</strong>.</p>
-                <p>A confirmation will be sent to <strong>{formData.email}</strong>.</p>
-                <br />
-                <Link to="/events">← Back to Events</Link>
+            <div className="page">
+                <div className="success-card">
+                    <div className="success-icon">✅</div>
+                    <h2>Registration Successful!</h2>
+                    <p><strong>{formData.name}</strong>, you have been registered for <strong>{eventName}</strong>.</p>
+                    <p>A confirmation will be sent to <strong>{formData.email}</strong>.</p>
+                    <br />
+                    <Link to="/events" className="btn btn-primary">← Back to Events</Link>
+                </div>
             </div>
         )
     }
 
     return (
-        <div style={{ padding: '20px' }}>
-            <h2>Register for: {eventName}</h2>
-            <form onSubmit={handleSubmit} style={{ maxWidth: '400px' }}>
-                <div style={{ marginBottom: '10px' }}>
-                    <label>Full Name:<br />
-                        <input type="text" name="name" value={formData.name} onChange={handleChange} required style={{ width: '100%', padding: '5px' }} />
-                    </label>
-                </div>
-                <div style={{ marginBottom: '10px' }}>
-                    <label>Email:<br />
-                        <input type="email" name="email" value={formData.email} onChange={handleChange} required style={{ width: '100%', padding: '5px' }} />
-                    </label>
-                </div>
-                <div style={{ marginBottom: '10px' }}>
-                    <label>Phone:<br />
-                        <input type="tel" name="phone" value={formData.phone} onChange={handleChange} required style={{ width: '100%', padding: '5px' }} />
-                    </label>
-                </div>
-                <div style={{ marginBottom: '10px' }}>
-                    <label>Department:<br />
-                        <select name="department" value={formData.department} onChange={handleChange} required style={{ width: '100%', padding: '5px' }}>
+        <div className="page">
+            <div className="page-header">
+                <h2>📝 Register for: {eventName}</h2>
+            </div>
+
+            <div className="form-container">
+                <form onSubmit={handleSubmit}>
+                    <div className="form-group">
+                        <label>Full Name</label>
+                        <input type="text" name="name" value={formData.name} onChange={handleChange} required placeholder="Enter your full name" />
+                    </div>
+                    <div className="form-group">
+                        <label>Email</label>
+                        <input type="email" name="email" value={formData.email} onChange={handleChange} required placeholder="Enter your email" />
+                    </div>
+                    <div className="form-group">
+                        <label>Phone</label>
+                        <input type="tel" name="phone" value={formData.phone} onChange={handleChange} required placeholder="Enter your phone number" />
+                    </div>
+                    <div className="form-group">
+                        <label>Department</label>
+                        <select name="department" value={formData.department} onChange={handleChange} required>
                             <option value="">Select Department</option>
                             <option value="Computer">Computer Engineering</option>
                             <option value="IT">Information Technology</option>
@@ -72,23 +76,22 @@ function Register() {
                             <option value="Mechanical">Mechanical Engineering</option>
                             <option value="Civil">Civil Engineering</option>
                         </select>
-                    </label>
-                </div>
-                <div style={{ marginBottom: '10px' }}>
-                    <label>Year:<br />
-                        <select name="year" value={formData.year} onChange={handleChange} required style={{ width: '100%', padding: '5px' }}>
+                    </div>
+                    <div className="form-group">
+                        <label>Year</label>
+                        <select name="year" value={formData.year} onChange={handleChange} required>
                             <option value="">Select Year</option>
                             <option value="FE">FE</option>
                             <option value="SE">SE</option>
                             <option value="TE">TE</option>
                             <option value="BE">BE</option>
                         </select>
-                    </label>
-                </div>
-                <button type="submit" style={{ padding: '8px 20px', cursor: 'pointer' }}>Register</button>
-            </form>
-            <br />
-            <Link to={`/events/${id}`}>← Back to Event Details</Link>
+                    </div>
+                    <button type="submit" className="form-submit">Register Now</button>
+                </form>
+            </div>
+
+            <Link to={`/events/${id}`} className="link-back">← Back to Event Details</Link>
         </div>
     )
 }

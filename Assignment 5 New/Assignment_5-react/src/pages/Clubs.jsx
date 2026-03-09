@@ -35,20 +35,28 @@ const clubs = [
 
 function Clubs() {
     return (
-        <div style={{ padding: '20px' }}>
-            <h2>College Clubs</h2>
-            <p>Explore the different clubs and their activities.</p>
+        <div className="page">
+            <div className="page-header">
+                <h2>🏛️ College Clubs</h2>
+                <p>Explore the different clubs and their activities.</p>
+            </div>
 
             {clubs.map((club, index) => (
-                <div key={index} style={{ border: '1px solid #ccc', padding: '15px', marginBottom: '15px' }}>
+                <div key={index} className="card">
                     <h3>{club.name}</h3>
                     <p>{club.description}</p>
-                    <p><strong>Members:</strong> {club.members}</p>
-                    <p><strong>Events:</strong> {club.events.join(', ')}</p>
+                    <div className="club-stats">
+                        <span className="stat">👥 {club.members} Members</span>
+                    </div>
+                    <div className="event-tags">
+                        {club.events.map((ev, i) => (
+                            <span key={i} className="event-tag">📅 {ev}</span>
+                        ))}
+                    </div>
                 </div>
             ))}
 
-            <Link to="/events">View All Events →</Link>
+            <Link to="/events" className="btn btn-outline">View All Events →</Link>
         </div>
     )
 }

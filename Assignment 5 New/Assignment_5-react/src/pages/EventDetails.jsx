@@ -75,34 +75,44 @@ function EventDetails() {
 
     if (!event) {
         return (
-            <div style={{ padding: '20px' }}>
-                <h2>Event Not Found</h2>
-                <p>The event you are looking for does not exist.</p>
-                <Link to="/events">← Back to Events</Link>
+            <div className="page">
+                <div className="success-card">
+                    <div className="success-icon">❌</div>
+                    <h2 style={{ color: '#c62828' }}>Event Not Found</h2>
+                    <p>The event you are looking for does not exist.</p>
+                    <Link to="/events" className="link-back">← Back to Events</Link>
+                </div>
             </div>
         )
     }
 
     return (
-        <div style={{ padding: '20px' }}>
-            <h2>{event.title}</h2>
-            <table border="1" cellPadding="8" style={{ borderCollapse: 'collapse' }}>
+        <div className="page">
+            <div className="page-header">
+                <h2>📌 {event.title}</h2>
+            </div>
+
+            <table className="detail-table">
                 <tbody>
-                    <tr><td><strong>Date</strong></td><td>{event.date}</td></tr>
-                    <tr><td><strong>Time</strong></td><td>{event.time}</td></tr>
-                    <tr><td><strong>Venue</strong></td><td>{event.venue}</td></tr>
-                    <tr><td><strong>Type</strong></td><td>{event.type}</td></tr>
-                    <tr><td><strong>Organized By</strong></td><td>{event.club}</td></tr>
-                    <tr><td><strong>Speaker / Host</strong></td><td>{event.speaker}</td></tr>
-                    <tr><td><strong>Available Seats</strong></td><td>{event.seats}</td></tr>
+                    <tr><td>📅 Date</td><td>{event.date}</td></tr>
+                    <tr><td>🕐 Time</td><td>{event.time}</td></tr>
+                    <tr><td>📍 Venue</td><td>{event.venue}</td></tr>
+                    <tr><td>📂 Type</td><td>{event.type}</td></tr>
+                    <tr><td>🏛️ Organized By</td><td>{event.club}</td></tr>
+                    <tr><td>🎤 Speaker / Host</td><td>{event.speaker}</td></tr>
+                    <tr><td>💺 Available Seats</td><td>{event.seats}</td></tr>
                 </tbody>
             </table>
 
-            <h3>Description</h3>
-            <p>{event.description}</p>
+            <div className="about-section" style={{ maxWidth: '600px' }}>
+                <h3>Description</h3>
+                <p>{event.description}</p>
+            </div>
 
-            <Link to={`/register/${id}`} style={{ marginRight: '15px' }}>Register for this Event</Link>
-            <Link to="/events">← Back to Events</Link>
+            <div style={{ display: 'flex', gap: '12px', marginTop: '20px', flexWrap: 'wrap' }}>
+                <Link to={`/register/${id}`} className="btn btn-accent">Register for this Event</Link>
+                <Link to="/events" className="btn btn-outline">← Back to Events</Link>
+            </div>
         </div>
     )
 }

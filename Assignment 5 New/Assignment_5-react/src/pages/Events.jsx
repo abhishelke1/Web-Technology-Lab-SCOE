@@ -9,14 +9,24 @@ const allEvents = [
     { id: 6, title: 'Debate Championship', date: 'April 25, 2026', type: 'Competition', club: 'Literary Club' },
 ]
 
+const badgeClass = {
+    Workshop: 'badge-workshop',
+    Festival: 'badge-festival',
+    Seminar: 'badge-seminar',
+    Competition: 'badge-competition',
+    Exhibition: 'badge-exhibition',
+}
+
 function Events() {
     return (
-        <div style={{ padding: '20px' }}>
-            <h2>All Events</h2>
-            <p>Browse through all upcoming college events below.</p>
+        <div className="page">
+            <div className="page-header">
+                <h2>📋 All Events</h2>
+                <p>Browse through all upcoming college events below.</p>
+            </div>
 
-            <table border="1" cellPadding="8" style={{ width: '100%', borderCollapse: 'collapse' }}>
-                <thead style={{ backgroundColor: '#f0f0f0' }}>
+            <table className="styled-table">
+                <thead>
                     <tr>
                         <th>#</th>
                         <th>Event Name</th>
@@ -31,12 +41,12 @@ function Events() {
                     {allEvents.map((event, index) => (
                         <tr key={event.id}>
                             <td>{index + 1}</td>
-                            <td>{event.title}</td>
+                            <td><strong>{event.title}</strong></td>
                             <td>{event.date}</td>
-                            <td>{event.type}</td>
+                            <td><span className={`badge ${badgeClass[event.type] || ''}`}>{event.type}</span></td>
                             <td>{event.club}</td>
-                            <td><Link to={`/events/${event.id}`}>View</Link></td>
-                            <td><Link to={`/register/${event.id}`}>Register</Link></td>
+                            <td><Link to={`/events/${event.id}`} className="btn btn-primary" style={{ padding: '5px 14px', fontSize: '0.82rem' }}>View</Link></td>
+                            <td><Link to={`/register/${event.id}`} className="btn btn-accent" style={{ padding: '5px 14px', fontSize: '0.82rem' }}>Register</Link></td>
                         </tr>
                     ))}
                 </tbody>

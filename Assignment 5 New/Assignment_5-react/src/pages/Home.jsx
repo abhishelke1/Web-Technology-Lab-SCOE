@@ -8,13 +8,15 @@ const upcomingEvents = [
 
 function Home() {
     return (
-        <div style={{ padding: '20px' }}>
-            <h2>Welcome to College Event Management System</h2>
-            <p>Stay updated with all upcoming college events, workshops, seminars, and club activities.</p>
+        <div className="page">
+            <div className="hero">
+                <h2>Welcome to College Event Management System</h2>
+                <p>Stay updated with all upcoming college events, workshops, seminars, and club activities.</p>
+            </div>
 
-            <h3>Upcoming Events</h3>
-            <table border="1" cellPadding="8" style={{ width: '100%', borderCollapse: 'collapse' }}>
-                <thead style={{ backgroundColor: '#f0f0f0' }}>
+            <h3 className="section-title">📅 Upcoming Events</h3>
+            <table className="styled-table">
+                <thead>
                     <tr>
                         <th>Event</th>
                         <th>Date</th>
@@ -28,14 +30,13 @@ function Home() {
                             <td>{event.title}</td>
                             <td>{event.date}</td>
                             <td>{event.club}</td>
-                            <td><Link to={`/events/${event.id}`}>View Details</Link></td>
+                            <td><Link to={`/events/${event.id}`} className="btn btn-primary" style={{ padding: '6px 16px', fontSize: '0.85rem' }}>View Details</Link></td>
                         </tr>
                     ))}
                 </tbody>
             </table>
 
-            <br />
-            <Link to="/events">Browse All Events →</Link>
+            <Link to="/events" className="btn btn-outline">Browse All Events →</Link>
         </div>
     )
 }
